@@ -1,6 +1,8 @@
 #Day by day stock price percentage change percentage change
 #Online Source: https://community.powerbi.com/t5/Desktop/How-to-calculate-percentage-change-from-prior-date-prior-record/m-p/280803
 #Data input: https://www.marketwatch.com/investing/stock/{StockCode2}/download-data?siteid=mktw&date=&x=0&y=0
+#Date: 30/01/21
+#Project: Stock Market Data Analysis
 #MEASURE
 % Change Highest prices = 
 VAR previousDateWithPrice = 
