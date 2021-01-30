@@ -1,0 +1,17 @@
+#Day by day stock price percentage change percentage change
+#Online Source: https://community.powerbi.com/t5/Desktop/How-to-calculate-percentage-change-from-prior-date-prior-record/m-p/280803
+#Data input: https://www.marketwatch.com/investing/stock/{StockCode2}/download-data?siteid=mktw&date=&x=0&y=0
+#MEASURE
+% Change Highest prices = 
+VAR previousDateWithPrice = 
+    CALCULATE(
+        MAX(MarketwatchStock[Date]),
+        FILTER(ALL(MarketwatchStock),MarketwatchStock[High]>0 && MarketwatchStock[Date] < MAX(MarketwatchStock[Date]))
+)
+VAR previousPrice =
+    CALCULATE(
+        SUM(MarketwatchStock[High]), 
+        FILTER(ALL(MarketwatchStock),MarketwatchStock[Date] = previousDateWithPrice)
+)
+RETURN
+    DIVIDE(SUM(MarketwatchStock[High])-previousPrice, previousPrice)
